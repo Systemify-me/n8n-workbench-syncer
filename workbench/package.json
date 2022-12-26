@@ -1,0 +1,18 @@
+{
+  "name": "n8n-workbench-project",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "export": "npx n8n export:workflow --backup --output ./project/workflows && npx n8n export:credentials --backup --output ./project/credentials",
+    "import": "npx n8n import:credentials --separate --input ./project/credentials && npx n8n import:workflow --separate --input ./project/workflows",
+    "push": "git init && dotenv cross-var git config user.email %REPO_PUSH_AUTHOR% && (dotenv cross-var git remote set-url origin %REPO_PUSH_URL% || dotenv cross-var git remote add origin %REPO_PUSH_URL%) && git add . && git commit -m 'Auto-generated commit' && git push --force --set-upstream origin main",
+    "pull": "dotenv cross-var git clone %REPO_PULL_URL%"
+  },
+  "author": "Vitalii @ systemify.me",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^6.0.0"
+  }
+}

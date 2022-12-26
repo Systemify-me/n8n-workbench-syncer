@@ -1,0 +1,19 @@
+{
+  "name": "n8n-workbench",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf ./workbench/.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Systemify-me/n8n-workbench.git"
+  },
+  "author": "Vitalii @ systemify.me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Systemify-me/n8n-workbench/issues"
+  },
+  "homepage": "https://github.com/Systemify-me/n8n-workbench#readme"
+}
