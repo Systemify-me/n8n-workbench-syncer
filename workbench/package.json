@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "export": "shx rm -rf ./project && npx n8n export:workflow --backup --output ./project/workflows && npx n8n export:credentials --backup --output ./project/credentials",
-    "import": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && npx n8n import:credentials --separate --input ./project/credentials && npx n8n import:workflow --separate --input ./project/workflows",
+    "export": "shx rm -rf ./project && n8n export:workflow --backup --output ./project/workflows && n8n export:credentials --backup --output ./project/credentials",
+    "import": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && n8n import:credentials --separate --input ./project/credentials && n8n import:workflow --separate --input ./project/workflows",
     "do-pull": "dotenv cross-var git clone %REPO_PULL_URL% ./temp && cd ./temp && git checkout main && (shx cp -r ./project ./../project) && cd .. && shx rm -rf ./temp",
     "pull": "shx rm -rf ./project && shx rm -rf ./temp && npm run do-pull",
     "do-push": "cd ./project && git add . && git commit -m 'Auto-generated commit' && git push --force --set-upstream origin main",
@@ -13,7 +13,7 @@
     "export-push": "npm run export && npm run push",
     "pull-import": "npm run pull && npm run import",
     "clean": "shx rm -rf ./project && shx rm -rf ./node_modules",
-    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && n8n start",
+    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && (%AppData%/npm/n8n start || n8n start)",
     "n8n-install": "npm install n8n -g",
     "n8n-update": "npm update n8n -g"
   },
