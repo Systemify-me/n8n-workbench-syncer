@@ -1,21 +1,23 @@
 {
   "name": "n8n-workbench-project",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "\n========== Import-export ==========": "",
     "export": "shx rm -rf ./project && n8n export:workflow --backup --output ./project/workflows && n8n export:credentials --backup --output ./project/credentials",
     "import": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && n8n import:credentials --separate --input ./project/credentials && n8n import:workflow --separate --input ./project/workflows",
-    "do-pull": "dotenv cross-var git clone %REPO_PULL_URL% ./temp && cd ./temp && git checkout main && (shx cp -r ./project ./../project) && cd .. && shx rm -rf ./temp",
-    "pull": "shx rm -rf ./project && shx rm -rf ./temp && npm run do-pull",
-    "do-push": "cd ./project && git add . && git commit -m 'Auto-generated commit' && git push --force --set-upstream origin main",
-    "push": "cd ./project && git init && dotenv cross-var git config user.email %REPO_PUSH_AUTHOR% && (dotenv cross-var git remote set-url origin %REPO_PUSH_URL% || dotenv cross-var git remote add origin %REPO_PUSH_URL%) && npm run do-push",
-    "export-push": "npm run export && npm run push",
-    "pull-import": "npm run pull && npm run import",
-    "clean": "shx rm -rf ./project && shx rm -rf ./node_modules",
-    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && (%AppData%/npm/n8n start || n8n start)",
-    "n8n-install": "npm install n8n -g",
-    "n8n-update": "npm update n8n -g"
+    "\n========== Push-pull ==========": "",
+    "pull": "node scripts/pull.js",
+    "push": "node scripts/push.js",
+    "\n========== Main shortcuts ==========": "",
+    "ex": "npm run export && npm run push",
+    "im": "npm run pull && npm run import",
+    "clean": "shx rm -rf ./project && shx rm -rf ./temp && shx rm -rf ./node_modules",
+    "\n========== n8n helpers ==========": "",
+    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && n8n start",
+    "n8n-install": "npm install n8n",
+    "n8n-update": "npm update n8n"
   },
   "author": "Vitalii @ systemify.me",
   "license": "ISC",
@@ -23,6 +25,8 @@
     "cross-env": "^7.0.3",
     "cross-var": "^1.1.0",
     "dotenv-cli": "^6.0.0",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "shelljs": "^0.8.5",
+    "n8n": "^0.209.4"
   }
 }
