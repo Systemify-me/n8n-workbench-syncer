@@ -9,20 +9,38 @@ if (!shell.which('git')) {
     shell.exit(1);
 }
 
-shell.cd('./project');
+shell.rm('-rf','./gitpush');
 
-if (shell.exec('git init').code !== 0) {
-    shell.echo('Error: Git init failed');
+if (shell.exec('git clone ' + REPO_PUSH_URL + ' ./gitpush').code !== 0) {
+    shell.echo('Error: Git clone failed');
     shell.exit(1);
 }
+
+shell.cd('./gitpush');
+
+if (shell.exec('git checkout main').code !== 0) {
+    shell.echo('Error: Git checkout failed');
+    shell.exit(1);
+}
+
 if (shell.exec('git config user.email ' + REPO_PUSH_AUTHOR).code !== 0) {
     shell.echo('Error: Git config user.email failed');
     shell.exit(1);
 }
-if (shell.exec('git remote add origin ' + REPO_PUSH_URL).code !== 0) {
-    shell.echo('Error: Git config add origin failed');
+
+if (shell.exec('git remote remove origin' ).code !== 0) {
+    shell.echo('Error: Git remove origin failed');
     shell.exit(1);
 }
+
+if (shell.exec('git remote add origin ' + REPO_PUSH_URL).code !== 0) {
+    shell.echo('Error: Git add origin failed');
+    shell.exit(1);
+}
+
+shell.cp("-ruf", "./../project/workflows", ".");
+shell.cp("-ruf", "./../project/credentials", ".");
+
 if (shell.exec('git add .').code !== 0) {
     shell.echo('Error: Git add . failed');
     shell.exit(1);
@@ -35,3 +53,6 @@ if (shell.exec('git push --force --set-upstream origin main').code !== 0) {
     shell.echo('Error: Git push failed');
     shell.exit(1);
 }
+
+shell.cd("..");
+shell.rm('-rf','./gitpush');
