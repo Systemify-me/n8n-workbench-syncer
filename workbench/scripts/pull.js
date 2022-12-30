@@ -22,4 +22,5 @@ if (shell.exec('git checkout main').code !== 0) {
     shell.exit(1);
 }
 
+shell.rm('-rf','.git');
 shell.cd('..');
