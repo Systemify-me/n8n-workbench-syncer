@@ -1,6 +1,6 @@
 {
   "name": "n8n-workbench-project",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,15 @@
     "\n========== Push-pull ==========": "",
     "pull": "node scripts/pull.js",
     "push": "node scripts/push.js",
+    "\n========== n8n helpers ==========": "",
+    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && cross-env N8N_METRICS=true && n8n start",
+    "n8n-install": "npm install n8n",
+    "n8n-update": "npm update n8n",
     "\n========== Main shortcuts ==========": "",
     "ex": "npm run export && npm run push",
     "im": "npm run pull && npm run import",
-    "clean": "shx rm -rf ./project && shx rm -rf ./temp && shx rm -rf ./node_modules",
-    "\n========== n8n helpers ==========": "",
-    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && n8n start",
-    "n8n-install": "npm install n8n",
-    "n8n-update": "npm update n8n"
+    "imr": "npm run im && npm run n8n",
+    "clean": "shx rm -rf ./project && shx rm -rf ./temp && shx rm -rf ./node_modules"
   },
   "author": "Vitalii @ systemify.me",
   "license": "ISC",

@@ -1,5 +1,5 @@
+# n8n-workbench-syncer
 This project helps to sync local n8n workflows with remote host.
-
 
 ### Installation - Local
 
