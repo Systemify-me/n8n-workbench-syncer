@@ -17,6 +17,13 @@ This project helps to sync local n8n workflows with remote host.
 
 > N8N_ENCRYPTION_KEY="n8n_long_secret_key" - encryption key
 
+7. Optonally, you can add more settings to the .env in order to configure n8n instanse:
+N8N_TEMPLATES_ENABLED="false"
+N8N_USER_MANAGEMENT_DISABLED="true"
+N8N_METRICS="true"
+EXECUTIONS_DATA_PRUNE="true"
+EXECUTIONS_DATA_MAX_AGE=168
+
 
 ### Installation - Host
 1. Install node.js ( https://nodejs.org/en/download/ ), n8n ( `npm run n8n-install` ) and git
@@ -30,3 +37,4 @@ This project helps to sync local n8n workflows with remote host.
 ### Workflow - Host
 1. Run `npm run im` - that will **clean** folder *project*, pull your private repo and import downloaded workflows and creds to the n8n instance
 3. Run `npm run n8n` - that will run the n8n with encryption key from the `.env` and couple of other useful exports. Feel free to modify them 
+

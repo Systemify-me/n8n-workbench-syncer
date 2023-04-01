@@ -11,7 +11,7 @@
     "pull": "node scripts/pull.js",
     "push": "node scripts/push.js",
     "\n========== n8n helpers ==========": "",
-    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% EXECUTIONS_DATA_PRUNE=true EXECUTIONS_DATA_MAX_AGE=168 N8N_USER_MANAGEMENT_DISABLED=true N8N_METRICS=true n8n start",
+    "n8n": "dotenv n8n start",
     "n8n-install": "npm install n8n",
     "n8n-update": "npm update n8n",
     "\n========== Main shortcuts ==========": "",
@@ -23,8 +23,6 @@
   "author": "Vitalii @ systemify.me",
   "license": "ISC",
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "cross-var": "^1.1.0",
     "dotenv-cli": "^6.0.0",
     "n8n": "^0.210.0",
     "shelljs": "^0.8.5",
