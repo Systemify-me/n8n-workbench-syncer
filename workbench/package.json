@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "\n========== Import-export ==========": "",
-    "export": "shx rm -rf ./project && n8n export:workflow --backup --output ./project/workflows && n8n export:credentials --backup --output ./project/credentials",
-    "import": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && n8n import:credentials --separate --input ./project/credentials && n8n import:workflow --separate --input ./project/workflows",
+    "export": "shx rm -rf ./project && dotenv -- n8n export:workflow --backup --output ./project/workflows && dotenv -- n8n export:credentials --backup --output ./project/credentials",
+    "import": "dotenv -- n8n import:credentials --separate --input ./project/credentials && dotenv -- n8n import:workflow --separate --input ./project/workflows",
     "\n========== Push-pull ==========": "",
     "pull": "node scripts/pull.js",
     "push": "node scripts/push.js",
     "\n========== n8n helpers ==========": "",
-    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% && cross-env EXECUTIONS_DATA_PRUNE=true && cross-env EXECUTIONS_DATA_MAX_AGE=168 && cross-env N8N_USER_MANAGEMENT_DISABLED=true && cross-env N8N_METRICS=true && n8n start",
+    "n8n": "dotenv cross-env N8N_ENCRYPTION_KEY=%N8N_ENCRYPTION_KEY% EXECUTIONS_DATA_PRUNE=true EXECUTIONS_DATA_MAX_AGE=168 N8N_USER_MANAGEMENT_DISABLED=true N8N_METRICS=true n8n start",
     "n8n-install": "npm install n8n",
     "n8n-update": "npm update n8n",
     "\n========== Main shortcuts ==========": "",
@@ -26,8 +26,8 @@
     "cross-env": "^7.0.3",
     "cross-var": "^1.1.0",
     "dotenv-cli": "^6.0.0",
-    "shx": "^0.3.4",
+    "n8n": "^0.210.0",
     "shelljs": "^0.8.5",
-    "n8n": "^0.209.4"
+    "shx": "^0.3.4"
   }
 }
