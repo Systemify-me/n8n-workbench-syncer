@@ -32,8 +32,14 @@ EXECUTIONS_DATA_MAX_AGE=168
 ### Workflow - Local
 1. Run `npm run ex` - (*export*) it will create new folder *project*, export your current workflow and creds, clones your private repo, commit all changes and push them to the bitbucket
 
-### Workflow - Host
+### Workflow - Host - Common flow
 1. Run `npm run imr` - (*import* + *run*) it will create folder *project*, pull your private repo, import downloaded workflows and creds to the n8n instance, and run n8n with envs variables
+
+### Workflow - Host - Experimental flow
+1. Run `npm run imar` - the same as *imr* above, but after the import and before running, doing activation. It will open every workflow and:
+- activate the workflow, if its name starts with "[A]"
+- disable the workflow otherwise
+This way, i can have all workflows disabled on the local machine, and enable them on host just by adding "[A]" to its name
 
 ## Known issues
 1. Sometimes there’s an error “resource is busy” during the n8n run. Just re-run "npm run imr" (or "npm run n8n"), it will fix the issue.

@@ -1,4 +1,4 @@
-var shell = require('shelljs');
+const shell = require('shelljs');
 require('dotenv').config();
 
 const REPO_PULL_URL = process.env.REPO_PULL_URL;
