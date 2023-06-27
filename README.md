@@ -36,7 +36,7 @@ EXECUTIONS_DATA_MAX_AGE=168
 1. Run `npm run imr` - (*import* + *run*) it will create folder *project*, pull your private repo, import downloaded workflows and creds to the n8n instance, and run n8n with envs variables
 
 ### Workflow - Host - Experimental flow
-1. Run `npm run imar` - the same as *imr* above, but after the import and before running, doing activation. It will open every workflow and:
+1. Run `npm run imar` - the same as *imr* above, but doing activation before the import. Activation will open every workflow and:
 - activate the workflow, if its name starts with "[A]"
 - disable the workflow otherwise
 This way, i can have all workflows disabled on the local machine, and enable them on host just by adding "[A]" to its name

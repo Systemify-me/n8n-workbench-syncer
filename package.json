@@ -1,6 +1,6 @@
 {
   "name": "n8n-workbench-project",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "\n========== Main shortcuts ==========": "",
     "ex": "npm run export && npm run push",
     "im": "npm run pull && npm run import",
-    "imr": "npm run im && npm run n8n",
-    "imar": "npm run im && npm run act && npm run n8n",
+    "imr": "npm run pull && npm run import && npm run n8n",
+    "imar": "npm run pull && npm run act && npm run import && npm run n8n",
     "clean": "shx rm -rf ./project && shx rm -rf ./temp && shx rm -rf ./node_modules",
     "\n========== HOWTO: Update local n8n ==========": "",
     "\n===1. Run 'npm run clean'===": "",
