@@ -35,7 +35,7 @@
   "license": "ISC",
   "devDependencies": {
     "dotenv-cli": "^6.0.0",
-    "n8n": "^0.220.0",
+    "n8n": "^0.236.2",
     "shelljs": "^0.8.5",
     "shx": "^0.3.4"
   }

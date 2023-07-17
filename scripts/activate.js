@@ -10,11 +10,16 @@ files.forEach(function (file) {
     const content = fs.readFileSync(fullFilename, 'utf8');
     const jsonContent = JSON.parse(content);
     const workflowName = jsonContent.name;
+    const workflowId = jsonContent.id;
 
-    jsonContent.active = workflowName.startsWith("[A]");
+    const shouldBeActive = workflowName.startsWith("[A]");
 
-    fs.writeFileSync(fullFilename, JSON.stringify(jsonContent, null, 2), 'utf8');
+    shell.exec("n8n update:workflow --id=" + workflowId + " --active=" + shouldBeActive);
+    
+    // Old approach, before n8n v0.226
+    //jsonContent.active = shouldBeActive;
+    //fs.writeFileSync(fullFilename, JSON.stringify(jsonContent, null, 2), 'utf8');
 
-    console.log(file + " - '" + workflowName + "' - Active is set to: " + jsonContent.active); 
+    console.log(file + " - '" + workflowName + "' with id '" + workflowId + "' - Active is set to: " + shouldBeActive); 
 });
     
